@@ -33,6 +33,16 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>BED05F44-272F-415A-B38D-A9F488870AB0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>2A7F4EEC-9CDA-415D-8D94-840326F56446</key>
 		<array>
@@ -255,7 +265,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>248951AF-CC02-4C99-8B83-C076BA1F7165</string>
+				<string>CC5F7959-F7A4-4B76-94E7-FCC4B45798F4</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -292,6 +302,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>2ED2B2E9-BACA-49D5-86A5-8E6EE62991AF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>CC5F7959-F7A4-4B76-94E7-FCC4B45798F4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>248951AF-CC02-4C99-8B83-C076BA1F7165</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -363,31 +386,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>script</key>
-				<string>function run(argv) {
-  return argv[0].trim().replace(/\s/g, ' ');
-}</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>7</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>2A7F4EEC-9CDA-415D-8D94-840326F56446</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>adduuid</key>
 				<false/>
 				<key>allowemptyfiles</key>
@@ -415,6 +413,31 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>function run(argv) {
+  return argv[0].trim().replace(/\s/g, ' ');
+}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>2A7F4EEC-9CDA-415D-8D94-840326F56446</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -428,25 +451,32 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>rlread</string>
-				<key>skipuniversalaction</key>
-				<true/>
-				<key>subtext</key>
-				<string></string>
-				<key>text</key>
-				<string>Read first item</string>
-				<key>withspace</key>
+				<key>concurrently</key>
 				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>function run(argv) {
+  fetch(argv[0]).then((res) =&gt; {
+    if (res.ok) {
+      const page = res.text();
+      console.log(page)
+    }
+  })
+}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>77770747-4764-4364-9CC0-0204384A925A</string>
+			<string>BED05F44-272F-415A-B38D-A9F488870AB0</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -485,25 +515,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>externaltriggerid</key>
-				<string>open_item</string>
-				<key>passinputasargument</key>
-				<false/>
-				<key>passvariables</key>
-				<true/>
-				<key>workflowbundleid</key>
-				<string>self</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.callexternaltrigger</string>
-			<key>uid</key>
-			<string>8C5FCB86-BC89-462E-949F-DFA50BC684BB</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -523,6 +534,48 @@
 			<string>D9D455FA-C126-49F4-833E-D2DCB965CE42</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>rlread</string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Read first item</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>77770747-4764-4364-9CC0-0204384A925A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>open_item</string>
+				<key>passinputasargument</key>
+				<false/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>8C5FCB86-BC89-462E-949F-DFA50BC684BB</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -580,89 +633,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
-				<true/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>2</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Getting list...</string>
-				<key>script</key>
-				<string>function run(argv) {
-  ObjC.import('stdlib');
-  const list = $.getenv('list').split('\n');
-  const showRead = $.getenv('show_read') === 'true';
-  const items = [];
-  
-  list.forEach((item) =&gt; {
-    const match = item.match(/(?:-|\*) \[(x| )\] (.+)$/m);
-
-    if (!match) {
-      return;
-    }
-
-    const isRead = match[1] === 'x';
-    const text = match[2];
-
-    if (showRead !== isRead) {
-      return;
-    }
-
-    items.push({
-      title: text,
-      arg: text,
-      icon: {
-        path: isRead ? './read.png' : './unread.png',
-      },
-      variables: {
-        item: text,
-      },
-    });
-  });
-
-  return JSON.stringify({
-    skipknowledge: true,
-    items,
-  });
-}</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>Reading list</string>
-				<key>type</key>
-				<integer>7</integer>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>5C434A4E-AE0D-4AC3-903B-DC57FD94E82A</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>externaltriggerid</key>
 				<string>open_item</string>
 				<key>passinputasargument</key>
@@ -702,29 +672,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>cat "${file_path}"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>97622ECB-E7D8-4A7F-8D24-01E8E35780F2</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
@@ -744,6 +691,123 @@
 			<string>ADB99D1F-284A-4D23-A3C2-AD058AA42882</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Getting list...</string>
+				<key>script</key>
+				<string>function run(argv) {
+  ObjC.import('stdlib');
+  const list = $.getenv('list').split('\n');
+  const showRead = $.getenv('show_read') === 'true';
+  const items = [];
+  const mdListMatch = /(?:-|\*) \[(x| )\] (.+)$/m;
+  const urlRegex = /https?:\/\/([\w-]+(\.[\w-]+)+\/?|localhost|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(:\d+)?(\/\S*)?$/;
+  
+  list.forEach((item) =&gt; {
+    const match = item.match(mdListMatch);
+
+    if (!match) {
+      return;
+    }
+
+    const isRead = match[1] === 'x';
+    const text = match[2];
+    const isURL = urlRegex.test(text);
+
+    const iconPath = isRead
+      ? isURL
+        ? './link-read.png'
+        : './search-read.png'
+      : isURL
+        ? './link-unread.png'
+        : './search-unread.png'
+
+    if (showRead !== isRead) {
+      return;
+    }
+
+    items.push({
+      title: text,
+      arg: text,
+      icon: {
+        path: iconPath,
+      },
+      variables: {
+        item: text,
+      },
+    });
+  });
+
+  return JSON.stringify({
+    skipknowledge: true,
+    items,
+  });
+}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Reading list</string>
+				<key>type</key>
+				<integer>7</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>5C434A4E-AE0D-4AC3-903B-DC57FD94E82A</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>cat "${file_path}"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>97622ECB-E7D8-4A7F-8D24-01E8E35780F2</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -917,6 +981,23 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argument</key>
+				<string>{var:item}</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>CC5F7959-F7A4-4B76-94E7-FCC4B45798F4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>adduuid</key>
 				<false/>
 				<key>allowemptyfiles</key>
@@ -1056,7 +1137,7 @@
 		<key>248951AF-CC02-4C99-8B83-C076BA1F7165</key>
 		<dict>
 			<key>xpos</key>
-			<real>1095</real>
+			<real>1155</real>
 			<key>ypos</key>
 			<real>810</real>
 		</dict>
@@ -1220,6 +1301,20 @@
 			<real>355</real>
 			<key>ypos</key>
 			<real>285</real>
+		</dict>
+		<key>BED05F44-272F-415A-B38D-A9F488870AB0</key>
+		<dict>
+			<key>xpos</key>
+			<real>240</real>
+			<key>ypos</key>
+			<real>120</real>
+		</dict>
+		<key>CC5F7959-F7A4-4B76-94E7-FCC4B45798F4</key>
+		<dict>
+			<key>xpos</key>
+			<real>1085</real>
+			<key>ypos</key>
+			<real>840</real>
 		</dict>
 		<key>D9D455FA-C126-49F4-833E-D2DCB965CE42</key>
 		<dict>
