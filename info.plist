@@ -610,7 +610,7 @@
 				<string>#!/bin/bash
 
 if [ "$is_url" = "1" ]; then
-  title=$(curl -s ${add_item} | grep -o '&lt;title&gt;.*&lt;/title&gt;' | sed -e 's/&lt;title&gt;\(.*\)&lt;\/title&gt;/\1/' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+  title=$(curl -s ${add_item} | grep -o '&lt;title&gt;[^&lt;]*&lt;/title&gt;' | head -n 1 | sed -e 's/&lt;title&gt;\(.*\)&lt;\/title&gt;/\1/' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 fi
 
 printf "$title"</string>
@@ -967,7 +967,7 @@ printf "%s\n" "${files[@]}"</string>
 				<string>#!/bin/bash
 
 if [ "$is_url" = "1" ]; then
-  title=$(curl -s ${add_item} | grep -o '&lt;title&gt;.*&lt;/title&gt;' | sed -e 's/&lt;title&gt;\(.*\)&lt;\/title&gt;/\1/' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+  title=$(curl -s ${add_item} | grep -o '&lt;title&gt;[^&lt;]*&lt;/title&gt;' | head -n 1 | sed -e 's/&lt;title&gt;\(.*\)&lt;\/title&gt;/\1/' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 fi
 
 printf "$title"</string>
@@ -2287,7 +2287,7 @@ exit</string>
 		</dict>
 	</array>
 	<key>version</key>
-	<string></string>
+	<string>1.0.2</string>
 	<key>webaddress</key>
 	<string>http://colomolome.com</string>
 </dict>
