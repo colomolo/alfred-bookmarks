@@ -1,8 +1,7 @@
-![String Multitool](./icon.png)
+![Bookmarks](./icon.png)
 
-# Reading list
+# Bookmarks
 
 [Alfred](https://www.alfredapp.com/) workflow helping you manage your links and quick search notes.
 
 ## Usage
-Use keyword `string` (or custom keyword) to init String Multitool. Provide string as an argument and select needed transformation from list.
