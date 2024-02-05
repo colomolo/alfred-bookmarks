@@ -14,7 +14,7 @@ Bookmarks will scan this folder and treat each .md file as a list. If for some r
 ## List items
 There are two list item types – URLs and search queries. URLs are opened in the browser and plain text is used in web search.
 
-You also can add checkboxes to list items. This is handy when you want to open your bookmarks only once. For example, you can use it for a list of articles that you need to go through.
+You also can add checkboxes to list items. This is handy when you want to open your bookmarks only once. For example, you can use it for a list of articles that you need to go through. Checkbox items will be checked on opening and hidden from the list. If you still want to see them, hold ⇧ while picking a list.
 
 You can convert plain items to checkbox items and vice versa by holding ⇧.
 
