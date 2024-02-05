@@ -1,7 +1,7 @@
 ![Bookmarks](./icon.png)
 
 # Bookmarks
-[Alfred](https://www.alfredapp.com/) workflow helping you manage your links and quick search notes.
+Workflow that helps you manage your links and quick search notes.
 
 ## Working folder
 The main idea of Bookmarks is to have all your bookmarks locally on your computer and independent from any app.
@@ -23,7 +23,7 @@ You can convert plain items to checkbox items and vice versa by holding ⇧.
 
 `bkadd` to add item to one of the lists.
 
-Bookmarks will try to present URLs in a convenient way. If it's possible to get page's title (by fetching the page), it will be shown as an item title. You can also specify it manually by formatting link in Markdown format. For example adding `[Transport Museum](https://www.ltmuseum.co.uk/)` as an argument to `bkadd` command will be later represented with a title and URL:
+Bookmarks will try to present URLs in a convenient way. If it's possible to get page's title (by fetching the page), it will be shown as an item title. You can also specify it manually by formatting link in Markdown format. For example adding `[Transport Museum](https://www.ltmuseum.co.uk/)` as an argument to `bkadd` command will later be represented with a title and URL:
 
 ![Markdown link](./markdown-link.png)
 
