@@ -38,7 +38,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>BE35305D-B11F-41B9-8764-FC3D80D1297F</string>
+				<string>302E1E16-91B8-4179-A372-083A10B4E6CE</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -415,21 +415,6 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>BE35305D-B11F-41B9-8764-FC3D80D1297F</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>302E1E16-91B8-4179-A372-083A10B4E6CE</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>ACA65CAA-E8A3-4440-A5AB-26CE32690934</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -942,52 +927,6 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "files_
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>adduuid</key>
-				<false/>
-				<key>allowemptyfiles</key>
-				<true/>
-				<key>createintermediatefolders</key>
-				<true/>
-				<key>filename</key>
-				<string>{var:file_path}</string>
-				<key>filetext</key>
-				<string>{query}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>relativepathmode</key>
-				<integer>1</integer>
-				<key>type</key>
-				<integer>1</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.writefile</string>
-			<key>uid</key>
-			<string>302E1E16-91B8-4179-A372-083A10B4E6CE</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>externaltriggerid</key>
-				<string>open_list</string>
-				<key>passinputasargument</key>
-				<false/>
-				<key>passvariables</key>
-				<true/>
-				<key>workflowbundleid</key>
-				<string>self</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.callexternaltrigger</string>
-			<key>uid</key>
-			<string>EED2114B-0E25-4079-A422-29B807720A11</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -1090,6 +1029,115 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "files_
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>function run(argv) {
+  ObjC.import('stdlib');
+  const item = JSON.parse($.getenv('item'));
+  const list = $.getenv('items_list').split('\n');
+  const action = $.getenv('action');
+
+  switch (action) {
+    case 'delete':
+      return list.filter((i) =&gt; i !== item.raw).join('\n');
+    case 'convert':
+      for (let index = 0; index &lt; list.length; index++) {
+        if (list[index] === item.raw) {
+          list[index] = item.isCheckbox ? item.checkboxLabel : `- [ ] ${item.raw}`;
+          return list.join('\n');
+        }
+      };
+    case 'toggle':
+      if (!item.isCheckbox) {
+        return list.join('\n');
+      }
+      for (let index = 0; index &lt; list.length; index++) {
+        if (list[index] === item.raw) {
+          list[index] = `- [${item.isChecked ? ' ' : 'x'}] ${item.checkboxLabel}`;
+          return list.join('\n');
+        }
+      };
+    case 'open':
+    case 'search':
+      if (!item.isCheckbox) {
+        return list.join('\n');
+      }
+      for (let index = 0; index &lt; list.length; index++) {
+        if (list[index] === item.raw) {
+          list[index] = `- [x] ${item.checkboxLabel}`;
+          return list.join('\n');
+        }
+      };
+    default:
+      return list.join('\n');
+  }
+}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>DD30017C-8EA1-400A-964F-BC80E0BE7C3B</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>adduuid</key>
+				<false/>
+				<key>allowemptyfiles</key>
+				<true/>
+				<key>createintermediatefolders</key>
+				<true/>
+				<key>filename</key>
+				<string>{var:file_path}</string>
+				<key>filetext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>relativepathmode</key>
+				<integer>1</integer>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.writefile</string>
+			<key>uid</key>
+			<string>302E1E16-91B8-4179-A372-083A10B4E6CE</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>open_list</string>
+				<key>passinputasargument</key>
+				<false/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>EED2114B-0E25-4079-A422-29B807720A11</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -1144,101 +1192,6 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "files_
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
 			<string>9E888CB9-4AB9-4E82-9A95-99DB3D88ECC0</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>script</key>
-				<string>function run(argv) {
-  ObjC.import('stdlib');
-  const item = JSON.parse($.getenv('item'));
-  const list = $.getenv('items_list').split('\n');
-  const action = $.getenv('action');
-
-  switch (action) {
-    case 'delete':
-      return list.filter((i) =&gt; i !== item.raw).join('\n');
-    case 'convert':
-      for (let index = 0; index &lt; list.length; index++) {
-        if (list[index] === item.raw) {
-          list[index] = item.isCheckbox ? item.checkboxLabel : `- [ ] ${item.raw}`;
-          return list.join('\n');
-        }
-      };
-    case 'toggle':
-      if (!item.isCheckbox) {
-        return '';
-      }
-      for (let index = 0; index &lt; list.length; index++) {
-        if (list[index] === item.raw) {
-          list[index] = `- [${item.isChecked ? ' ' : 'x'}] ${item.checkboxLabel}`;
-          return list.join('\n');
-        }
-      };
-    case 'open':
-    case 'search':
-      if (!item.isCheckbox) {
-        return '';
-      }
-      for (let index = 0; index &lt; list.length; index++) {
-        if (list[index] === item.raw) {
-          list[index] = `- [x] ${item.checkboxLabel}`;
-          return list.join('\n');
-        }
-      };
-    default:
-      return list.join('\n');
-  }
-}</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>7</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>DD30017C-8EA1-400A-964F-BC80E0BE7C3B</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string>{query}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>1</integer>
-						<key>matchstring</key>
-						<string></string>
-						<key>outputlabel</key>
-						<string>write</string>
-						<key>uid</key>
-						<string>ACA65CAA-E8A3-4440-A5AB-26CE32690934</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>noop</string>
-				<key>hideelse</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>BE35305D-B11F-41B9-8764-FC3D80D1297F</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2036,7 +1989,7 @@ Workflow that helps you manage your links and quick search notes.
 		<key>2F77B88F-0DDA-45E8-901C-D634CFA40459</key>
 		<dict>
 			<key>xpos</key>
-			<real>1275</real>
+			<real>1270</real>
 			<key>ypos</key>
 			<real>395</real>
 		</dict>
@@ -2045,9 +1998,9 @@ Workflow that helps you manage your links and quick search notes.
 			<key>colorindex</key>
 			<integer>2</integer>
 			<key>xpos</key>
-			<real>1445</real>
+			<real>1340</real>
 			<key>ypos</key>
-			<real>350</real>
+			<real>365</real>
 		</dict>
 		<key>396091EF-7EF3-4395-9DC2-A20951D01CE2</key>
 		<dict>
@@ -2160,9 +2113,9 @@ Workflow that helps you manage your links and quick search notes.
 		<key>9E888CB9-4AB9-4E82-9A95-99DB3D88ECC0</key>
 		<dict>
 			<key>xpos</key>
-			<real>1605</real>
+			<real>1490</real>
 			<key>ypos</key>
-			<real>355</real>
+			<real>370</real>
 		</dict>
 		<key>A013A9B4-3B19-4889-A859-092BEB536969</key>
 		<dict>
@@ -2197,13 +2150,6 @@ Workflow that helps you manage your links and quick search notes.
 			<real>330</real>
 			<key>ypos</key>
 			<real>145</real>
-		</dict>
-		<key>BE35305D-B11F-41B9-8764-FC3D80D1297F</key>
-		<dict>
-			<key>xpos</key>
-			<real>1350</real>
-			<key>ypos</key>
-			<real>385</real>
 		</dict>
 		<key>CC5F7959-F7A4-4B76-94E7-FCC4B45798F4</key>
 		<dict>
@@ -2245,9 +2191,9 @@ Workflow that helps you manage your links and quick search notes.
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<real>1705</real>
+			<real>1600</real>
 			<key>ypos</key>
-			<real>350</real>
+			<real>365</real>
 		</dict>
 		<key>F2779F39-D160-463F-A7FA-C6DA46262DB2</key>
 		<dict>
@@ -2319,7 +2265,7 @@ Workflow that helps you manage your links and quick search notes.
 		</dict>
 	</array>
 	<key>version</key>
-	<string>1.0.6</string>
+	<string>1.0.2</string>
 	<key>webaddress</key>
 	<string>http://colomolome.com</string>
 </dict>
