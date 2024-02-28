@@ -471,6 +471,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>EEEB93F3-C8DD-4165-BD54-E0F4BFDDBFB4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>474362A0-D044-4360-913E-BEA54A24A03E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>F2779F39-D160-463F-A7FA-C6DA46262DB2</key>
 		<array>
 			<dict>
@@ -927,6 +940,37 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "files_
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>1</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>EEEB93F3-C8DD-4165-BD54-E0F4BFDDBFB4</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -1255,14 +1299,6 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "files_
     const isURL = urlRegex.test(result.text);
     const mdLinkMatch = result.text.match(mdLinkRegex);
 
-    //result.iconPath = result.isCheckbox
-    //  ? result.isChecked
-    //    ? './checked.png'
-    //    : './unchecked.png'
-    //  : (isURL || mdLinkMatch)
-    //    ? './link-unread.png'
-    //    : './search-unread.png';
-
     result.iconPath = result.isCheckbox
       ? result.isChecked
         ? './checked.png'
@@ -1289,7 +1325,6 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "files_
 
     const currentItem = {
       title: text,
-//      subtitle: `${href ? '🔗' : '🔍'} ${href === text ? '' : href || ''}`,
       subtitle: href === text ? '' : href || '',
       text: {
         copy: href || text,
@@ -2194,6 +2229,15 @@ Workflow that helps you manage your links and quick search notes.
 			<real>1600</real>
 			<key>ypos</key>
 			<real>365</real>
+		</dict>
+		<key>EEEB93F3-C8DD-4165-BD54-E0F4BFDDBFB4</key>
+		<dict>
+			<key>note</key>
+			<string>Add selection</string>
+			<key>xpos</key>
+			<real>30</real>
+			<key>ypos</key>
+			<real>245</real>
 		</dict>
 		<key>F2779F39-D160-463F-A7FA-C6DA46262DB2</key>
 		<dict>
