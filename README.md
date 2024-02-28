@@ -18,6 +18,8 @@ You also can add checkboxes to list items. This is handy when you want to open y
 
 You can convert plain items to checkbox items and vice versa by holding ⇧.
 
+![List items](./list-items.png)
+
 ## Usage
 `bk` to see your lists.
 
