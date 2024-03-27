@@ -11,6 +11,11 @@ After installing the workflow you should specify the working folder in workflow 
 
 Bookmarks will scan this folder and treat each .md file as a list. If for some reason you will delete Bookmarks or even Alfred, your once created lists will still stay with you.
 
+### Modifiers
+`⌘` to open list file in text editor.  
+`⇧` to show checked items.  
+`⌘⌥⇧` to delete list permanently.
+
 ## List items
 There are two list item types – URLs and search queries. URLs are opened in the browser and plain text is used in web search.
 
@@ -19,6 +24,10 @@ You also can add checkboxes to list items. This is handy when you want to open y
 You can convert plain items to checkbox items and vice versa by holding ⇧.
 
 ![List items](./list-items.png)
+
+### Modifiers
+`⇧` to convert to checkbox item.  
+`⌘⌥⇧` to delete item permanently.
 
 ## Usage
 `bk` to see your lists.
