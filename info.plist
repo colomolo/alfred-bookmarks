@@ -2490,7 +2490,7 @@ Workflow that helps you manage your links and quick search notes.
 		</dict>
 	</array>
 	<key>version</key>
-	<string>1.0.7</string>
+	<string>1.1.0</string>
 	<key>webaddress</key>
 	<string>http://colomolome.com</string>
 </dict>
