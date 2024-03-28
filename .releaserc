@@ -1,12 +1,7 @@
 {
   "branches": ["main"],
   "plugins": [
-    ["@semantic-release/commit-analyzer", {
-      "preset": "angular",
-      "releaseRules": [
-        {"release": "patch"}
-      ]
-    }],
+    "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     ["@semantic-release/exec", {
       "prepareCmd": "./.zip.sh ${nextRelease.version}"
