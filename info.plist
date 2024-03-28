@@ -8,6 +8,19 @@
 	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
+		<key>040F31C0-FABD-49FE-B8BD-5EA505D53EE4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E46B6F22-840D-46D4-AA76-17CFBEAF8176</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>10901C44-E1B5-47A1-B5DE-70FA233D92A2</key>
 		<array>
 			<dict>
@@ -251,6 +264,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>65379110-B872-4F23-87D6-CD0AD84F79FC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1CBA405D-ADED-4171-9CF8-61791AFA0AA5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>6842F50F-F7AC-41F5-9B9D-391841CEAABF</key>
 		<array>
 			<dict>
@@ -406,6 +432,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>A3C6B4C8-860A-44C2-B3DE-6B7678DCD6FA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>65379110-B872-4F23-87D6-CD0AD84F79FC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>B5092358-47DB-41CD-9827-D08B520E5211</key>
 		<array>
 			<dict>
@@ -463,6 +502,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>F3D37694-B5B4-486E-8621-AD1B525510F5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E46B6F22-840D-46D4-AA76-17CFBEAF8176</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A3C6B4C8-860A-44C2-B3DE-6B7678DCD6FA</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -600,7 +652,6 @@ if [ "$action" != "add" ]; then
   IFS=$'\n'
 
   files=($(ls "${folder_path}"/*.md))
-
   files_list=$(printf '%s\\n' "${files[@]}")
 fi
 
@@ -887,8 +938,6 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "files_
   const isCheckbox = $.getenv('as_checkbox') === '1';
   const input = $.getenv('add_item');
 
-  console.log($.getenv('files_list'));
-
   let arg = input.trim().replace(/\s/g, ' ');
 
   if (pageTitle) {
@@ -903,8 +952,8 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "files_
     const filename = filepath.match(/.+\/(.+)\.md/i)[1];
 
     return {
-      title: `Add to: ${filename}`,
-      subtitle: `as '${pageTitle ? pageTitle : arg}'`,
+      title: `→ ${filename}`,
+      subtitle: `as '${pageTitle || arg}'`,
       arg,
       variables: {
         file_path: filepath,
@@ -967,6 +1016,108 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "files_
 			<string>EEEB93F3-C8DD-4165-BD54-E0F4BFDDBFB4</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>tasksettings</key>
+				<dict>
+					<key>out_format</key>
+					<string>title_tab_url</string>
+				</dict>
+				<key>taskuid</key>
+				<string>com.alfredapp.automation.extras/web-browsers/frontmost-browser/frontmost.tabs.current</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.automation.task</string>
+			<key>uid</key>
+			<string>A3C6B4C8-860A-44C2-B3DE-6B7678DCD6FA</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>040F31C0-FABD-49FE-B8BD-5EA505D53EE4</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>#!/bin/bash
+
+IFS=$'\n'
+
+files=($(ls "${folder_path}"/*.md))
+files_list=$(printf '%s\\n' "${files[@]}")
+
+IFS=$'\t' read -r title url &lt;&lt;&lt; "{query}"
+
+printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "add_item": "%s", "files_list": "%s", "as_checkbox": "false"}}}' "$title" "$url" "$files_list"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>65379110-B872-4F23-87D6-CD0AD84F79FC</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>{var:keyword}tab</string>
+				<key>subtext</key>
+				<string>Currently opened tab in a frontmost browser</string>
+				<key>text</key>
+				<string>Add tab to list</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>E46B6F22-840D-46D4-AA76-17CFBEAF8176</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1991,12 +2142,21 @@ Workflow that helps you manage your links and quick search notes.
 [Description](https://github.com/colomolo/alfred-bookmarks)</string>
 	<key>uidata</key>
 	<dict>
+		<key>040F31C0-FABD-49FE-B8BD-5EA505D53EE4</key>
+		<dict>
+			<key>note</key>
+			<string>Add frontmost browser's tab url to the list</string>
+			<key>xpos</key>
+			<real>30</real>
+			<key>ypos</key>
+			<real>385</real>
+		</dict>
 		<key>10901C44-E1B5-47A1-B5DE-70FA233D92A2</key>
 		<dict>
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>440</real>
+			<real>590</real>
 		</dict>
 		<key>1CBA405D-ADED-4171-9CF8-61791AFA0AA5</key>
 		<dict>
@@ -2012,7 +2172,7 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>1115</real>
 			<key>ypos</key>
-			<real>490</real>
+			<real>640</real>
 		</dict>
 		<key>248951AF-CC02-4C99-8B83-C076BA1F7165</key>
 		<dict>
@@ -2026,7 +2186,7 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>1270</real>
 			<key>ypos</key>
-			<real>395</real>
+			<real>545</real>
 		</dict>
 		<key>302E1E16-91B8-4179-A372-083A10B4E6CE</key>
 		<dict>
@@ -2035,7 +2195,7 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>1340</real>
 			<key>ypos</key>
-			<real>365</real>
+			<real>515</real>
 		</dict>
 		<key>396091EF-7EF3-4395-9DC2-A20951D01CE2</key>
 		<dict>
@@ -2044,7 +2204,7 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>1115</real>
 			<key>ypos</key>
-			<real>625</real>
+			<real>775</real>
 		</dict>
 		<key>406292A0-392D-4CF4-B1A3-C370AC62CDF1</key>
 		<dict>
@@ -2058,7 +2218,7 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>490</real>
 			<key>ypos</key>
-			<real>425</real>
+			<real>575</real>
 		</dict>
 		<key>474362A0-D044-4360-913E-BEA54A24A03E</key>
 		<dict>
@@ -2088,21 +2248,28 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>985</real>
 			<key>ypos</key>
-			<real>355</real>
+			<real>505</real>
 		</dict>
 		<key>5E0CFAC8-AA68-4BAA-8B45-2CE0707D96E8</key>
 		<dict>
 			<key>xpos</key>
 			<real>595</real>
 			<key>ypos</key>
-			<real>805</real>
+			<real>960</real>
 		</dict>
 		<key>60E66A3C-B7DB-4CE1-A705-0BDEC0AF0AC5</key>
 		<dict>
 			<key>xpos</key>
 			<real>750</real>
 			<key>ypos</key>
-			<real>520</real>
+			<real>670</real>
+		</dict>
+		<key>65379110-B872-4F23-87D6-CD0AD84F79FC</key>
+		<dict>
+			<key>xpos</key>
+			<real>495</real>
+			<key>ypos</key>
+			<real>385</real>
 		</dict>
 		<key>6842F50F-F7AC-41F5-9B9D-391841CEAABF</key>
 		<dict>
@@ -2111,7 +2278,7 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>595</real>
 			<key>ypos</key>
-			<real>520</real>
+			<real>670</real>
 		</dict>
 		<key>6EA11B33-D4A6-4775-8543-C04B7602A99B</key>
 		<dict>
@@ -2120,7 +2287,7 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>905</real>
 			<key>ypos</key>
-			<real>670</real>
+			<real>820</real>
 		</dict>
 		<key>7A76445F-1E80-4804-BFB6-661EE530E999</key>
 		<dict>
@@ -2143,14 +2310,14 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>595</real>
 			<key>ypos</key>
-			<real>670</real>
+			<real>820</real>
 		</dict>
 		<key>9E888CB9-4AB9-4E82-9A95-99DB3D88ECC0</key>
 		<dict>
 			<key>xpos</key>
 			<real>1490</real>
 			<key>ypos</key>
-			<real>370</real>
+			<real>520</real>
 		</dict>
 		<key>A013A9B4-3B19-4889-A859-092BEB536969</key>
 		<dict>
@@ -2168,7 +2335,7 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>180</real>
 			<key>ypos</key>
-			<real>440</real>
+			<real>590</real>
 		</dict>
 		<key>A28A9626-BA46-4966-9442-987A799F8472</key>
 		<dict>
@@ -2177,7 +2344,14 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>379</real>
 			<key>ypos</key>
-			<real>430</real>
+			<real>580</real>
+		</dict>
+		<key>A3C6B4C8-860A-44C2-B3DE-6B7678DCD6FA</key>
+		<dict>
+			<key>xpos</key>
+			<real>340</real>
+			<key>ypos</key>
+			<real>385</real>
 		</dict>
 		<key>B5092358-47DB-41CD-9827-D08B520E5211</key>
 		<dict>
@@ -2205,14 +2379,21 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>1115</real>
 			<key>ypos</key>
-			<real>365</real>
+			<real>515</real>
 		</dict>
 		<key>E01F4800-8000-4766-822A-E0658514BB9D</key>
 		<dict>
 			<key>xpos</key>
 			<real>745</real>
 			<key>ypos</key>
-			<real>425</real>
+			<real>575</real>
+		</dict>
+		<key>E46B6F22-840D-46D4-AA76-17CFBEAF8176</key>
+		<dict>
+			<key>xpos</key>
+			<real>180</real>
+			<key>ypos</key>
+			<real>385</real>
 		</dict>
 		<key>E8BADEFB-E178-4BE6-B35A-F2A5A9A1EF17</key>
 		<dict>
@@ -2228,7 +2409,7 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>1600</real>
 			<key>ypos</key>
-			<real>365</real>
+			<real>515</real>
 		</dict>
 		<key>EEEB93F3-C8DD-4165-BD54-E0F4BFDDBFB4</key>
 		<dict>
@@ -2251,7 +2432,7 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>815</real>
 			<key>ypos</key>
-			<real>395</real>
+			<real>545</real>
 		</dict>
 		<key>FEAF9D6C-A10E-4BD7-AE09-6B8F101BDF4F</key>
 		<dict>
@@ -2260,7 +2441,7 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>595</real>
 			<key>ypos</key>
-			<real>395</real>
+			<real>545</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
@@ -2309,7 +2490,7 @@ Workflow that helps you manage your links and quick search notes.
 		</dict>
 	</array>
 	<key>version</key>
-	<string>1.0.10</string>
+	<string>1.0.7</string>
 	<key>webaddress</key>
 	<string>http://colomolome.com</string>
 </dict>

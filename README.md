@@ -11,7 +11,14 @@ After installing the workflow you should specify the working folder in workflow 
 
 Bookmarks will scan this folder and treat each .md file as a list. If for some reason you will delete Bookmarks or even Alfred, your once created lists will still stay with you.
 
-### Modifiers
+## Usage
+`bk` to see your lists.
+
+`bkadd` to add item to one of the lists.
+
+`bktab` to add the current active tab of the frontmost browser to the list.
+
+### List modifiers
 `⌘` to open list file in text editor.  
 `⇧` to show checked items.  
 `⌘⌥⇧` to delete list permanently.
@@ -25,14 +32,9 @@ You can convert plain items to checkbox items and vice versa by holding ⇧.
 
 ![List items](./list-items.png)
 
-### Modifiers
+### List item modifiers
 `⇧` to convert to checkbox item.  
 `⌘⌥⇧` to delete item permanently.
-
-## Usage
-`bk` to see your lists.
-
-`bkadd` to add item to one of the lists.
 
 Bookmarks will try to present URLs in a convenient way. If it's possible to get page's title (by fetching the page), it will be shown as an item title. You can also specify it manually by formatting link in Markdown format. For example adding `[Transport Museum](https://www.ltmuseum.co.uk/)` as an argument to `bkadd` command will later be represented with a title and URL:
 
