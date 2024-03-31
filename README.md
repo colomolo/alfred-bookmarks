@@ -18,6 +18,8 @@ Bookmarks will scan this folder and treat each .md file as a list. If for some r
 
 `bktab` to add the current active tab of the frontmost browser to the list.
 
+![Lists](./lists.png)
+
 ### List modifiers
 `⌘` to open list file in text editor.  
 `⇧` to show checked items.  
