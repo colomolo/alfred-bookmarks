@@ -384,7 +384,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>8E691172-7E11-4FAD-9202-D82211748E00</string>
+				<string>E147BFDE-A3FD-42BC-9100-029FF6E2D4BE</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -444,6 +444,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>B0F8418E-4678-4367-9FA8-AC52CDDD026C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F3D37694-B5B4-486E-8621-AD1B525510F5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>CC5F7959-F7A4-4B76-94E7-FCC4B45798F4</key>
 		<array>
 			<dict>
@@ -475,6 +488,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>2F77B88F-0DDA-45E8-901C-D634CFA40459</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E147BFDE-A3FD-42BC-9100-029FF6E2D4BE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8E691172-7E11-4FAD-9202-D82211748E00</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -551,7 +577,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>F3D37694-B5B4-486E-8621-AD1B525510F5</string>
+				<string>B0F8418E-4678-4367-9FA8-AC52CDDD026C</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1097,6 +1123,26 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "add_it
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>file_path</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>E147BFDE-A3FD-42BC-9100-029FF6E2D4BE</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -1250,7 +1296,7 @@ for file in "${files[@]}"; do
   filename=$(basename $file)
 
   printf '{
-    "arg":"",
+    "arg":"%s",
     "valid":"yes",
     "title":"%s",
     "mods":{
@@ -1278,11 +1324,10 @@ for file in "${files[@]}"; do
       }
     },
     "variables":{
-      "file_path": "%s",
       "list_action":"open",
       "show_checked":"false"
     }
-  },' "${filename%.*}" "$file"
+  },' "$file" "${filename%.*}"
 done
 
 printf '{
@@ -1889,7 +1934,7 @@ rm "{query}"</string>
       raw: str,
       text: str,
       href: null,
-      iconPath: '',
+      iconPath: null,
       isCheckbox: false,
       isChecked: false,
       checkboxLabel: null,
@@ -1922,8 +1967,9 @@ rm "{query}"</string>
   }
   
   list.filter((item) =&gt; item.trim()).forEach((item) =&gt; {
-    const parsedItem = getItemParts(item);
-    const { text, iconPath, href, isCheckbox, isChecked } = parsedItem;
+    const itemParts = getItemParts(item);
+    const { text, iconPath, href, isCheckbox, isChecked } = itemParts;
+    const parsedItem = JSON.stringify(itemParts, null, 0);
 
     if (isChecked &amp;&amp; !showChecked) {
       return;
@@ -1944,14 +1990,14 @@ rm "{query}"</string>
           },
           variables: {
             action: 'delete',
-            item: JSON.stringify(parsedItem),
+            item: parsedItem,
           },
         },
         'shift': {
           subtitle: isCheckbox ? '⇧: Convert to plain item' : '⇧: Convert to checkbox item',
           variables: {
             action: 'convert',
-            item: JSON.stringify(parsedItem),
+            item: parsedItem,
           },
         },
       },
@@ -1960,7 +2006,7 @@ rm "{query}"</string>
       },
       variables: {
         action: href ? 'open' : 'search',
-        item: JSON.stringify(parsedItem),
+        item: parsedItem,
         open: href || text,
       },
     };
@@ -1971,7 +2017,7 @@ rm "{query}"</string>
         subtitle: isChecked ? '⌘⇧: Uncheck item' : '⌘⇧: Check item',
         variables: {
           action: 'toggle',
-          item: JSON.stringify(parsedItem)
+          item: parsedItem
         },
       };
     }
@@ -2034,9 +2080,7 @@ rm "{query}"</string>
 				<key>script</key>
 				<string>#!/bin/bash
 
-items=$(cat "${file_path}")
-
-printf '{"alfredworkflow": {"arg": "", "variables": {"items_list": "%q"}}}' "$items"</string>
+cat "${file_path}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -2055,6 +2099,26 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"items_list": "%q"}}}' "$it
 			<string>FEAF9D6C-A10E-4BD7-AE09-6B8F101BDF4F</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>items_list</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>B0F8418E-4678-4367-9FA8-AC52CDDD026C</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -2347,6 +2411,13 @@ Workflow that helps you manage your links and quick search notes.
 			<key>ypos</key>
 			<real>385</real>
 		</dict>
+		<key>B0F8418E-4678-4367-9FA8-AC52CDDD026C</key>
+		<dict>
+			<key>xpos</key>
+			<real>1270</real>
+			<key>ypos</key>
+			<real>1555</real>
+		</dict>
 		<key>CC5F7959-F7A4-4B76-94E7-FCC4B45798F4</key>
 		<dict>
 			<key>xpos</key>
@@ -2367,6 +2438,13 @@ Workflow that helps you manage your links and quick search notes.
 			<real>1645</real>
 			<key>ypos</key>
 			<real>1480</real>
+		</dict>
+		<key>E147BFDE-A3FD-42BC-9100-029FF6E2D4BE</key>
+		<dict>
+			<key>xpos</key>
+			<real>485</real>
+			<key>ypos</key>
+			<real>575</real>
 		</dict>
 		<key>E46B6F22-840D-46D4-AA76-17CFBEAF8176</key>
 		<dict>
@@ -2412,7 +2490,7 @@ Workflow that helps you manage your links and quick search notes.
 			<key>note</key>
 			<string>Items</string>
 			<key>xpos</key>
-			<real>1285</real>
+			<real>1340</real>
 			<key>ypos</key>
 			<real>1525</real>
 		</dict>
