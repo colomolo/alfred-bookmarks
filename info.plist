@@ -12,7 +12,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>E46B6F22-840D-46D4-AA76-17CFBEAF8176</string>
+				<string>A3C6B4C8-860A-44C2-B3DE-6B7678DCD6FA</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1020,33 +1020,23 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "files_
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>0</integer>
-				<key>focusedappvariable</key>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>{var:keyword}tab</string>
+				<key>subtext</key>
+				<string>Currently opened tab in a frontmost browser</string>
+				<key>text</key>
+				<string>Add tab to list</string>
+				<key>withspace</key>
 				<false/>
-				<key>focusedappvariablename</key>
-				<string></string>
-				<key>hotkey</key>
-				<integer>0</integer>
-				<key>hotmod</key>
-				<integer>0</integer>
-				<key>hotstring</key>
-				<string></string>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedAppsMode</key>
-				<integer>0</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>040F31C0-FABD-49FE-B8BD-5EA505D53EE4</string>
+			<string>E46B6F22-840D-46D4-AA76-17CFBEAF8176</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1083,23 +1073,33 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "add_it
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>{var:keyword}tab</string>
-				<key>subtext</key>
-				<string>Currently opened tab in a frontmost browser</string>
-				<key>text</key>
-				<string>Add tab to list</string>
-				<key>withspace</key>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
 				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>1703936</integer>
+				<key>hotstring</key>
+				<string>A</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
-			<string>E46B6F22-840D-46D4-AA76-17CFBEAF8176</string>
+			<string>040F31C0-FABD-49FE-B8BD-5EA505D53EE4</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1294,11 +1294,13 @@ printf '{"items":['
 
 for file in "${files[@]}"; do
   filename=$(basename $file)
+  count=$(grep -vcE '^(-|\*) \[x\]' $file)
+  count_all=$(grep -cE '^(-|\*) \[x\]' $file)
 
   printf '{
     "arg":"%s",
     "valid":"yes",
-    "title":"%s",
+    "title":"%s [%s]",
     "mods":{
       "cmd":{
         "subtitle":"⌘: Open in editor",
@@ -1307,7 +1309,7 @@ for file in "${files[@]}"; do
         }
       },
       "shift":{
-        "subtitle":"⇧: Show checked items",
+        "subtitle":"⇧: Show with checked items [%s]",
         "variables":{
           "list_action":"open",
           "show_checked":"true"
@@ -1327,7 +1329,7 @@ for file in "${files[@]}"; do
       "list_action":"open",
       "show_checked":"false"
     }
-  },' "$file" "${filename%.*}"
+  },' "$file" "${filename%.*}" "$count" "$count_all"
 done
 
 printf '{
@@ -1411,6 +1413,11 @@ touch "${folder_path}"/{query}.md</string>
 				<string>Create '{query}.md'</string>
 				<key>withspace</key>
 				<true/>
+			</dict>
+			<key>inboundconfig</key>
+			<dict>
+				<key>externalid</key>
+				<string>create_list</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.keyword</string>
@@ -1981,6 +1988,7 @@ rm "{query}"</string>
       text: {
         copy: href || text,
       },
+      quicklookurl: href || '',
       arg: text,
       mods: {
         'cmd+alt+shift': {
@@ -2192,16 +2200,16 @@ Workflow that helps you manage your links and quick search notes.
 			<key>note</key>
 			<string>Add frontmost browser's tab url to the list</string>
 			<key>xpos</key>
-			<real>30</real>
+			<real>180</real>
 			<key>ypos</key>
-			<real>385</real>
+			<real>510</real>
 		</dict>
 		<key>10901C44-E1B5-47A1-B5DE-70FA233D92A2</key>
 		<dict>
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>590</real>
+			<real>675</real>
 		</dict>
 		<key>1CBA405D-ADED-4171-9CF8-61791AFA0AA5</key>
 		<dict>
@@ -2304,14 +2312,14 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>565</real>
 			<key>ypos</key>
-			<real>960</real>
+			<real>1045</real>
 		</dict>
 		<key>60E66A3C-B7DB-4CE1-A705-0BDEC0AF0AC5</key>
 		<dict>
 			<key>xpos</key>
 			<real>720</real>
 			<key>ypos</key>
-			<real>670</real>
+			<real>755</real>
 		</dict>
 		<key>65379110-B872-4F23-87D6-CD0AD84F79FC</key>
 		<dict>
@@ -2327,7 +2335,7 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>565</real>
 			<key>ypos</key>
-			<real>670</real>
+			<real>755</real>
 		</dict>
 		<key>6EA11B33-D4A6-4775-8543-C04B7602A99B</key>
 		<dict>
@@ -2336,12 +2344,12 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>875</real>
 			<key>ypos</key>
-			<real>820</real>
+			<real>905</real>
 		</dict>
 		<key>7A76445F-1E80-4804-BFB6-661EE530E999</key>
 		<dict>
 			<key>xpos</key>
-			<real>880</real>
+			<real>905</real>
 			<key>ypos</key>
 			<real>145</real>
 		</dict>
@@ -2350,7 +2358,7 @@ Workflow that helps you manage your links and quick search notes.
 			<key>colorindex</key>
 			<integer>2</integer>
 			<key>xpos</key>
-			<real>945</real>
+			<real>970</real>
 			<key>ypos</key>
 			<real>115</real>
 		</dict>
@@ -2361,14 +2369,14 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>565</real>
 			<key>ypos</key>
-			<real>545</real>
+			<real>630</real>
 		</dict>
 		<key>8F40CA58-2BC5-4379-A074-8147CA9A0D37</key>
 		<dict>
 			<key>xpos</key>
 			<real>565</real>
 			<key>ypos</key>
-			<real>820</real>
+			<real>905</real>
 		</dict>
 		<key>9E888CB9-4AB9-4E82-9A95-99DB3D88ECC0</key>
 		<dict>
@@ -2393,7 +2401,7 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>180</real>
 			<key>ypos</key>
-			<real>590</real>
+			<real>675</real>
 		</dict>
 		<key>A28A9626-BA46-4966-9442-987A799F8472</key>
 		<dict>
@@ -2402,7 +2410,7 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>379</real>
 			<key>ypos</key>
-			<real>580</real>
+			<real>665</real>
 		</dict>
 		<key>A3C6B4C8-860A-44C2-B3DE-6B7678DCD6FA</key>
 		<dict>
@@ -2444,7 +2452,7 @@ Workflow that helps you manage your links and quick search notes.
 			<key>xpos</key>
 			<real>485</real>
 			<key>ypos</key>
-			<real>575</real>
+			<real>660</real>
 		</dict>
 		<key>E46B6F22-840D-46D4-AA76-17CFBEAF8176</key>
 		<dict>
