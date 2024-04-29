@@ -857,13 +857,13 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "files_
 						<key>matchstring</key>
 						<string>add</string>
 						<key>outputlabel</key>
-						<string>list selected</string>
+						<string>list already selected</string>
 						<key>uid</key>
 						<string>6415A710-2A3F-48CB-B274-09B374142BC2</string>
 					</dict>
 				</array>
 				<key>elselabel</key>
-				<string>else</string>
+				<string>select list</string>
 				<key>hideelse</key>
 				<false/>
 			</dict>
@@ -919,8 +919,8 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "files_
   const filesList = ($.getenv('files_list') || '').trim().split('\n');
   const isCheckbox = $.getenv('as_checkbox') === '1';
   const input = $.getenv('add_item');
-
   let arg = input.trim().replace(/\s/g, ' ');
+  const subtitle = `as '${pageTitle || arg}'`;
 
   if (pageTitle) {
     arg = `[${pageTitle}](${arg})`;
@@ -935,13 +935,28 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "files_
 
     return {
       title: `→ ${filename}`,
-      subtitle: `as '${pageTitle || arg}'`,
+      subtitle,
       arg,
       variables: {
         file_path: filepath,
       },
     };
   });
+
+  // items.push({
+  //   arg: '',
+  //   valid: 'yes',
+  //   title:'Create new list',
+  //   icon:{path: './create-new.png'},
+  //   mods:{
+  //     'cmd': {'subtitle': '', 'valid': 'no', 'arg': ''},
+  //     'shift': {'subtitle': '', 'valid': 'no', 'arg': ''},
+  //     'cmd+alt+shift': {'subtitle': '', 'valid': 'no', 'arg': ''}
+  //   },
+  //   variables:{
+  //     list_action: 'create'
+  //   }
+  // });
 
   return JSON.stringify({
     skipknowledge: true,
@@ -2489,7 +2504,7 @@ Workflow that helps you manage your links and quick search notes.
 		<key>F2779F39-D160-463F-A7FA-C6DA46262DB2</key>
 		<dict>
 			<key>xpos</key>
-			<real>530</real>
+			<real>490</real>
 			<key>ypos</key>
 			<real>135</real>
 		</dict>
