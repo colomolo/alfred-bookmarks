@@ -1,15 +1,15 @@
-![Bookmarks](./icon.png)
+![Bookmark Vault](./icon.png)
 
-# Bookmarks
+# Bookmark Vault
 Workflow that helps you manage your links and quick search notes.
 
 ## Working folder
-The main idea of Bookmarks is to have all your bookmarks locally on your computer and independent from any app.
+The main idea of Bookmark Vault is to have all your bookmarks locally on your computer and independent from any app.
 
 After installing the workflow you should specify the working folder in workflow configuration:
 ![Configuration](./configuration.png)
 
-Bookmarks will scan this folder and treat each .md file as a list. If for some reason you will delete Bookmarks or even Alfred, your once created lists will still stay with you.
+Bookmark Vault will scan this folder and treat each .md file as a list. If for some reason you will delete Bookmarks or even Alfred, your once created lists will still stay with you.
 
 ## Usage
 `bk` to see your lists.
