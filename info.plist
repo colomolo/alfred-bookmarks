@@ -594,7 +594,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Bookmarks</string>
+	<string>Bookmark Vault</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -1372,7 +1372,7 @@ printf ']}'</string>
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>Bookmarks</string>
+				<string>Bookmark Vault</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -2202,9 +2202,9 @@ cat "${file_path}"</string>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>![Bookmarks](./icon.png)
+	<string>![Bookmark Vault](./icon.png)
 
-# Bookmarks
+# Bookmark Vault
 Workflow that helps you manage your links and quick search notes.
 
 [Description](https://github.com/colomolo/alfred-bookmarks)</string>
@@ -2537,7 +2537,7 @@ Workflow that helps you manage your links and quick search notes.
 				<key>placeholder</key>
 				<string></string>
 				<key>required</key>
-				<true/>
+				<false/>
 				<key>trim</key>
 				<true/>
 			</dict>
@@ -2560,7 +2560,7 @@ Workflow that helps you manage your links and quick search notes.
 				<key>placeholder</key>
 				<string></string>
 				<key>required</key>
-				<false/>
+				<true/>
 			</dict>
 			<key>description</key>
 			<string>Markdown files will be created here</string>
