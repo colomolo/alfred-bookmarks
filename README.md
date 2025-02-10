@@ -45,4 +45,12 @@ Bookmark Vault will try to present URLs in a convenient way. If it's possible to
 
 Happy bookmarking!
 
+## Check out other workflows
+### [Timer](https://github.com/colomolo/alfred-timer)
+Set up short timers with natural language as input or use presets with custom durations.
+
+### [String Multitool](https://github.com/colomolo/alfred-string-multitool)
+Tools for string manipulation and transformation.
+
+---
 <a href='https://ko-fi.com/I2I0W98PT' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi3.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
