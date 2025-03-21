@@ -23,14 +23,17 @@ Bookmark Vault will scan this folder and treat each .md file as a list. If for s
 ### List modifiers
 `⌘` to open list file in text editor.  
 `⇧` to show checked items.  
+`⌘⇧` to open all items of the list (excluding checked items).  
 `⌘⌥⇧` to delete list permanently.
 
 ## List items
 There are two list item types – URLs and search queries. URLs are opened in the browser and plain text is used in web search.
 
-You also can add checkboxes to list items. This is handy when you want to open your bookmarks only once. For example, you can use it for a list of articles that you need to go through. Checkbox items will be checked on opening and hidden from the list. If you still want to see them, hold ⇧ while picking a list.
+You also can add checkboxes to list items. This is handy when you want to open your bookmarks only once. For example, you can use it for a list of articles that you need to go through. Checkbox items will be checked on opening and hidden from the list. If you want to see checked items, hold `⇧` on list selection.
 
-You can convert plain items to checkbox items and vice versa by holding ⇧.
+You can convert plain items to checkbox items and vice versa by holding `⇧`.
+
+Use `⌘C` shortcut to copy item text or URL if it's a link.
 
 ![List items](./list-items.png)
 
@@ -52,5 +55,5 @@ Set up short timers with natural language as input or use presets with custom du
 ### [String Multitool](https://github.com/colomolo/alfred-string-multitool)
 Tools for string manipulation and transformation.
 
----
+## Support development
 <a href='https://ko-fi.com/I2I0W98PT' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi3.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
