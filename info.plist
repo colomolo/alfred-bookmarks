@@ -1207,7 +1207,7 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "add_it
 
 items=$(./parse_list.sh)
 
-printf '{ "alfredworkflow": { "arg": "", "variables": { "item": "%s" } } }' "$items"</string>
+printf '{ "alfredworkflow": { "arg": "", "variables": { "items": "%s" } } }' "$items"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -1668,7 +1668,7 @@ rm "{query}"</string>
 				<string>function run(argv) {
   ObjC.import('stdlib');
   const searchEngine = $.getenv('search_engine');
-  const item = JSON.parse($.getenv('item'));
+  const items = JSON.parse($.getenv('items'));
 
   const searchEnginesMap = (query) =&gt; {
     const map = {
@@ -1687,7 +1687,7 @@ rm "{query}"</string>
     return searchEnginesMap(item.text);
   };
 
-  const urls = Array.isArray(item) ? item.map(getUrl) : getUrl(item);
+  const urls = Array.isArray(items) ? items.map(getUrl) : getUrl(items);
 
   return JSON.stringify({
     alfredworkflow: {
