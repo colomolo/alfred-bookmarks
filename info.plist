@@ -1871,7 +1871,7 @@ rm "{query}"</string>
 				<key>script</key>
 				<string>function run(argv) {
   ObjC.import('stdlib');
-  const item = JSON.parse($.getenv('item'));
+  const item = JSON.parse($.getenv('items'));
   const list = $.getenv('items_list').split('\n');
   const action = $.getenv('action');
 

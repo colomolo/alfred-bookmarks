@@ -2,6 +2,7 @@
 
 function run(argv) {
   const list = argv[0].split('\n');
+  const showChecked = argv[1] === 'true';
   const items = [];
 
   const mdCheckboxMatch = /(?:-|\*) \[(x| )\] (.+)$/i;
@@ -54,7 +55,7 @@ function run(argv) {
     .forEach((item) => {
       const parsedItem = parseItem(item);
 
-      if (parsedItem.isChecked) {
+      if (parsedItem.isChecked && !showChecked) {
         return;
       }
 
