@@ -1095,27 +1095,6 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "files_
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>{var:keyword}tab</string>
-				<key>subtext</key>
-				<string>Currently opened tab in a frontmost browser</string>
-				<key>text</key>
-				<string>Add tab to list</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>E46B6F22-840D-46D4-AA76-17CFBEAF8176</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -1144,6 +1123,27 @@ printf '{"alfredworkflow": {"arg": "", "variables": {"page_title": "%s", "add_it
 			<string>65379110-B872-4F23-87D6-CD0AD84F79FC</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>{var:keyword}tab</string>
+				<key>subtext</key>
+				<string>Currently opened tab in a frontmost browser</string>
+				<key>text</key>
+				<string>Add tab to list</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>E46B6F22-840D-46D4-AA76-17CFBEAF8176</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -2144,14 +2144,14 @@ rm "{query}"</string>
           },
           variables: {
             action: 'delete',
-            item: parsedItem,
+            items: parsedItem,
           },
         },
         'shift': {
           subtitle: isCheckbox ? '⇧: Convert to plain item' : '⇧: Convert to checkbox item',
           variables: {
             action: 'convert',
-            item: parsedItem,
+            items: parsedItem,
           },
         },
       },
@@ -2160,7 +2160,7 @@ rm "{query}"</string>
       },
       variables: {
         action: href ? 'open' : 'search',
-        item: parsedItem,
+        items: parsedItem,
       },
     };
 
@@ -2170,7 +2170,7 @@ rm "{query}"</string>
         subtitle: isChecked ? '⌘⇧: Uncheck item' : '⌘⇧: Check item',
         variables: {
           action: 'toggle',
-          item: parsedItem
+          items: parsedItem
         },
       };
     }
